@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Quiz</title>
+    <style>
+         
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #79e6ee;
+        }
+
+        #quiz-container {
+            background-color: #d3f0f6;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #52ca56;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result-container {
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="quiz-container">
+        <h1>Quiz Time!</h1>
+        <form id="quiz-form">
+            <div class="question">
+                <p>1. What is the capital of France?</p>
+                <input type="radio" name="q1" value="Paris">   Paris
+                 
+
+                <input type="radio" name="q1" value="Berlin">   Berlin
+                <input type="radio" name="q1" value="Madrid">   Madrid
+            </div>
+
+            <div class="question">
+                <p>2. Which is the largest planet in our solar system?</p>
+                <input type="radio" name="q2" value="Earth"> Earth
+                <input type="radio" name="q2" value="Jupiter"> Jupiter
+                <input type="radio" name="q2" value="Mars"> Mars
+            </div>
+
+            <div class="question">
+                <p>3. Select the colors of the rainbow:</p>
+                <input type="checkbox" name="q3[]" value="Red"> Red
+                <input type="checkbox" name="q3[]" value="Green"> Green
+                <input type="checkbox" name="q3[]" value="Blue"> Blue
+                <input type="checkbox" name="q3[]" value="Yellow"> Yellow
+            </div>
+
+            <button type="button" onclick="calculateMarks()">Submit</button>
+        </form>
+
+        <div id="result-container">
+            <h2>Result</h2>
+            <p id="marks">Marks: <span id="score">0</span></p>
+        </div>
+    </div>
+
+    <script>
+    function calculateMarks() {
+            let marks = 0;
+
+            // Question 1
+            const q1Answer = document.querySelector('input[name="q1"]:checked');
+            if (q1Answer && q1Answer.value === "Paris") {
+                marks += 1;
+            }
+
+            // Question 2
+            const q2Answer = document.querySelector('input[name="q2"]:checked');
+            if (q2Answer && q2Answer.value === "Jupiter") {
+                marks += 1;
+            }
+
+            // Question 3
+            const q3Answers = document.querySelectorAll('input[name="q3[]"]:checked');
+            const correctQ3Answers = ["Red", "Green", "Blue"];
+            if (q3Answers.length === correctQ3Answers.length) {
+                let correct = true;
+                q3Answers.forEach((answer) => {
+                    if (!correctQ3Answers.includes(answer.value)) {
+                        correct = false;
+                    }
+                });
+                if (correct) {
+                    marks += 1;
+                }
+            }
+
+            // Display result
+            document.getElementById('score').innerText = marks;
+            document.getElementById('result-container').style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

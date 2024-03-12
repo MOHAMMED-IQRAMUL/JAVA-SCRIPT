@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-family:'Arial Narrow Bold', sans-serif;
+        }
+        button{
+            height: 30px;
+            width: 120px;
+            text-align: center;
+            justify-content: center;
+            border:3px solid blue ;
+            border-radius: 2em;
+            background-color: aqua;
+            margin: 0;
+            padding: 0;
+            color: black;
+            font-weight: 900;
+        }
+        .ans{
+            height: 20px;
+            /* width: 100px; */
+            text-align: center;
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="" class="form">
+        <div class="Q">
+            <p class="Question">XYZ</p>
+            <label for="one1">Option1</label>
+            <input type="radio" id="one1" name="options">
+            <label for="one2">Option2</label>
+            <input type="radio" id="one2" name="options">
+            <label for="one3">Option3</label>
+            <input type="radio" id="one3" name="options">
+            <label for="one4">Option4</label>
+            <input type="radio" id="one4" name="options">
+            <button type="submit" onclick="validateAnswers()">Submit</button>
+
+        </div>
+    </form>
+    <div class="ans"></div>
+
+
+    <Script src="script.js"></Script>
+</body>
+
+</html>

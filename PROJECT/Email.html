@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: auto;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #79e6ee;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #Box-container {
+        background-color: #d3f0f6;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    }
+
+    input {
+        margin: 10px;
+        padding: 10px;
+        border-radius: 1em;
+        border-color: rgb(25, 141, 223);
+    }
+
+    button {
+        background-color: #52ca56;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    #result-container {
+        background-color: antiquewhite;
+        margin: 10px;
+        border-radius: .5em;
+        padding: 5px;
+        /* height: 10px; */
+        /* width: 20px; */
+    }
+</style>
+
+<body>
+
+    <div id="Box-container">
+
+        <label for="text">
+        </label>TEXT
+        <input type="text" name="" id="text" placeholder="TEXT">
+        <br>
+        <label for="email">
+        </label>MAIL
+        <input type="email" name="" id="email" placeholder="ABC@EXAMPLE.CO">
+        <br>
+        <label for="tel">
+        </label>TEL
+        <input type="tel" name="" id="tel" placeholder="+91 123 123 1234" inputmode="numeric">
+        <br>
+        <label for="number">
+        </label>NUM
+        <input type="number" name="" id="number" placeholder="1234" inputmode="numeric">
+        <br>
+        <label for="password">
+        </label>PASS
+        <input type="password" name="" id="password" placeholder="PASSWORD">
+
+        <br>
+        <button type="button" onclick="ValidateEmail()">Submit</button>
+
+    </div>
+
+
+
+    <div id="result-container">
+        xyz
+    </div>
+
+
+    <script>
+        const ValidateEmail = () => {
+            let resultContainer = document.querySelector("#result-container");
+            let emailInput = document.querySelector("#email");
+            let textInput = document.querySelector("#text");
+            let telInput = document.querySelector("#tel");
+            let numInput = document.querySelector("#number");
+            let passInput = document.querySelector("#password");
+            // Regular expression for basic email validation
+            let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailRegex.test(emailInput.value)) {
+                resultContainer.innerText = "Invalid email address";
+            } else {
+                resultContainer.innerText = "Email is valid!";
+            }
+
+            let Data = `${textInput.value}  ${emailInput.value}  ${telInput.value}  ${numInput.value}  ${passInput.value}`
+
+            resultContainer.innerText = Data;
+
+        }
+    </script>
+
+</body>
+
+</html>
